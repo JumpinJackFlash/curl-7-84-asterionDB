@@ -17,7 +17,7 @@ SPDX-License-Identifier: curl
 [![Fuzzing Status](https://oss-fuzz-build-logs.storage.googleapis.com/badges/curl.svg)](https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:curl)
 [![REUSE status](https://api.reuse.software/badge/github.com/curl/curl)](https://api.reuse.software/info/github.com/curl/curl)
 
-AsterionDB
+## AsterionDB
 
 Modifications made to lib/curl_sasl.c to get OAuth to work.
 
@@ -29,7 +29,7 @@ Build:
 
 mkdir build
 cd build
-ccmake3 ../
+ccmake3 ../ (turn off shared lib to get a static lib)
 make ...
 
 
