@@ -29,7 +29,10 @@ Build:
 
 mkdir build
 cd build
-ccmake3 ../ (turn off shared lib to get a static lib)
+ccmake3 ../ 
+Turn off shared lib to get a static lib
+Toggle advanced mode to add -fPIC as a compiler flag
+...
 make ...
 
 
