@@ -447,6 +447,8 @@ CURLcode Curl_sasl_start(struct SASL *sasl, struct Curl_easy *data,
       }
     else
 #endif
+// Modification by AsterionDB
+/*
     if((enabledmechs & SASL_MECH_OAUTHBEARER) && oauth_bearer) {
       mech = SASL_MECH_STRING_OAUTHBEARER;
       state1 = SASL_OAUTH2;
@@ -470,6 +472,31 @@ CURLcode Curl_sasl_start(struct SASL *sasl, struct Curl_easy *data,
                                                         oauth_bearer,
                                                         &resp);
     }
+*/
+    if((enabledmechs & SASL_MECH_XOAUTH2) && oauth_bearer) {
+      mech = SASL_MECH_STRING_XOAUTH2;
+      state1 = SASL_OAUTH2;
+      sasl->authused = SASL_MECH_XOAUTH2;
+
+      if(force_ir || data->set.sasl_ir)
+        result = Curl_auth_create_xoauth_bearer_message(conn->user,
+                                                        oauth_bearer,
+                                                        &resp);
+    }
+    else     if((enabledmechs & SASL_MECH_OAUTHBEARER) && oauth_bearer) {
+      mech = SASL_MECH_STRING_OAUTHBEARER;
+      state1 = SASL_OAUTH2;
+      state2 = SASL_OAUTH2_RESP;
+      sasl->authused = SASL_MECH_OAUTHBEARER;
+
+      if(force_ir || data->set.sasl_ir)
+        result = Curl_auth_create_oauth_bearer_message(conn->user,
+                                                       hostname,
+                                                       port,
+                                                       oauth_bearer,
+                                                       &resp);
+    }
+//  Modification End
     else if(enabledmechs & SASL_MECH_PLAIN) {
       mech = SASL_MECH_STRING_PLAIN;
       state1 = SASL_PLAIN;
