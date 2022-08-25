@@ -17,6 +17,22 @@ SPDX-License-Identifier: curl
 [![Fuzzing Status](https://oss-fuzz-build-logs.storage.googleapis.com/badges/curl.svg)](https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:curl)
 [![REUSE status](https://api.reuse.software/badge/github.com/curl/curl)](https://api.reuse.software/info/github.com/curl/curl)
 
+AsterionDB
+
+Modifications made to lib/curl_sasl.c to get OAuth to work.
+
+Search for Modification by AsterionDB.
+
+This version is for use with Fedora 36.
+
+Build:
+
+mkdir build
+cd build
+ccmake3 ../
+make ...
+
+
 Curl is a command-line tool for transferring data specified with URL
 syntax. Find out how to use curl by reading [the curl.1 man
 page](https://curl.se/docs/manpage.html) or [the MANUAL
